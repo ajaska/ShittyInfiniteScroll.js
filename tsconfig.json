@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "lib": ["es2015", "dom"],
+    "allowJs": true,
+    "checkJs": true,
+    "outFile": "./build/ShittyInfiniteScroll.js",
+    "outDir": "./build",
+    "rootDir": "./src", 
+    "strict": true, 
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true, 
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"]
+}
