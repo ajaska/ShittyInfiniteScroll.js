@@ -1,0 +1,13 @@
+{
+  "name": "ShityInfiniteScroll.js",
+  "version": "1.0.0",
+  "description": "Save time and effort on your infinite scroll implementation with this easy-to-use drop-in script",
+  "main": "index.js",
+  "repository": "https://github.com/ajaska",
+  "author": "@ajaska",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "typescript": "^3.7.2"
+  }
+}
