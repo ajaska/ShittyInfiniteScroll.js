@@ -1,0 +1,12 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.content {
+  max-width: 600px;
+  font-size: 24px;
+}
+
+.cheese-block {
+  padding: 24px;
+}
