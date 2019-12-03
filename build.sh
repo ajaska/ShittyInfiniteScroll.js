@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-tsc
-cp ./build/ShittyInfiniteScroll.js ./docs/ShittyInfiniteScroll.js 
+mkdir -p build/
+browserify src/index.ts -p [ tsify -p . ] > build/bundle.js
+cp ./build/bundle.js ./docs/ShittyInfiniteScroll.js 

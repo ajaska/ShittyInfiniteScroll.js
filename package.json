@@ -8,7 +8,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "browserify": "^16.5.0",
     "prettier": "^1.19.1",
+    "tsify": "^4.0.1",
     "typescript": "^3.7.2"
   },
   "scripts": {

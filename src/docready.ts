@@ -23,8 +23,9 @@ function ready() {
       // and will schedule the callback to run right after
       // this event loop finishes so all handlers will still execute
       // in order and no new ones will be added to the readyList
+
       // while we are processing the list
-      setTimeout(() => readyList[i](), 1);
+      setTimeout(readyList[i], 1);
     }
     // allow any closures held by these functions to free
     readyList = [];
