@@ -1,7 +1,30 @@
-interface SomeInterface {
-  thing: number;
+import docReady from "./docready";
+
+function determineFooterElement(): HTMLElement {
+  return document.querySelector("footer")!;
 }
 
-let x: SomeInterface = { thing: 7 };
-console.log(x);
-console.log(x.thing + 1);
+function footerCallback() {
+  console.log("hello");
+}
+
+const initIntersectionObserver = () => {
+  const options = {
+    /* root: document.querySelector(".cat-list") */
+  };
+
+  const footer = determineFooterElement();
+
+  const callback: IntersectionObserverCallback = entries => {
+    entries.forEach(entry => {
+      if (entry.target === footer) {
+        footerCallback();
+      }
+    });
+  };
+
+  var observer = new IntersectionObserver(callback, options);
+  observer.observe(footer);
+};
+
+docReady(initIntersectionObserver);

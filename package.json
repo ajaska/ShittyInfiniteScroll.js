@@ -12,6 +12,7 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "build": "./build.sh"
+    "build": "./build.sh",
+    "clean": "rm -r ./build"
   }
 }
