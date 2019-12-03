@@ -1,6 +1,6 @@
 // Thanks to https://medium.com/walmartlabs/infinite-scrolling-the-right-way-11b098a08815
 export default function(footer: Element, callback: () => void) {
-  const options = {};
+  const options = { rootMargin: "40px" };
 
   const observerCallback: IntersectionObserverCallback = entries => {
     entries.forEach(entry => {

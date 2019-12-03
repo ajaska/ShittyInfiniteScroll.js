@@ -83,7 +83,7 @@ exports.default = onDocReady;
 Object.defineProperty(exports, "__esModule", { value: true });
 // Thanks to https://medium.com/walmartlabs/infinite-scrolling-the-right-way-11b098a08815
 function default_1(footer, callback) {
-    var options = {};
+    var options = { rootMargin: "40px" };
     var observerCallback = function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting && entry.target === footer) {
@@ -101,14 +101,35 @@ exports.default = default_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 var docready_1 = require("./docready");
 var footerVisible_1 = require("./footerVisible");
+var footer = null;
 function determineFooterElement() {
-    return document.querySelector("footer");
+    return (document.querySelector("footer") ||
+        document.querySelector(".footer") ||
+        document.querySelector("#footer"));
+}
+function insertInfiniteScrollItems() {
+    var _a;
+    if (((_a = footer) === null || _a === void 0 ? void 0 : _a.parentNode) == null)
+        return;
+    for (var i = 0; i < 10; i++) {
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        img.src = "https://picsum.photos/200/300";
+        div.className = "cheese-block";
+        div.textContent = "hello world";
+        footer.parentNode.insertBefore(div, footer);
+        footer.parentNode.insertBefore(img, footer);
+    }
 }
 function footerCallback() {
+    setTimeout(function () { return insertInfiniteScrollItems(); }, 500);
     console.log("hello");
 }
 docready_1.default(function () {
-    footerVisible_1.default(determineFooterElement(), footerCallback);
+    footer = determineFooterElement();
+    if (footer != null) {
+        footerVisible_1.default(footer, function () { return footerCallback(); });
+    }
 });
 
 },{"./docready":1,"./footerVisible":2}]},{},[3]);
