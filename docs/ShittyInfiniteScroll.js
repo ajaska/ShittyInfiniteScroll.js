@@ -111,19 +111,15 @@ function insertInfiniteScrollItems() {
     var _a;
     if (((_a = footer) === null || _a === void 0 ? void 0 : _a.parentNode) == null)
         return;
-    for (var i = 0; i < 10; i++) {
-        var div = document.createElement("div");
+    // Whoa. An old-school for-loop.
+    for (var i = 0; i < 5; i++) {
         var img = document.createElement("img");
-        img.src = "https://picsum.photos/200/300";
-        div.className = "cheese-block";
-        div.textContent = "hello world";
-        footer.parentNode.insertBefore(div, footer);
+        img.src = "https://picsum.photos/300/200";
         footer.parentNode.insertBefore(img, footer);
     }
 }
 function footerCallback() {
     setTimeout(function () { return insertInfiniteScrollItems(); }, 500);
-    console.log("hello");
 }
 docready_1.default(function () {
     footer = determineFooterElement();
