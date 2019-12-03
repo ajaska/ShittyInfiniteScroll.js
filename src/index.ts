@@ -1,30 +1,18 @@
 import docReady from "./docready";
+import footerVisible from "./footerVisible";
 
-function determineFooterElement(): HTMLElement {
-  return document.querySelector("footer")!;
+function determineFooterElement(): Element {
+  return (
+    document.querySelector("footer") ||
+    document.querySelector(".footer") ||
+    document.querySelector("#footer")!
+  );
 }
 
 function footerCallback() {
   console.log("hello");
 }
 
-const initIntersectionObserver = () => {
-  const options = {
-    /* root: document.querySelector(".cat-list") */
-  };
-
-  const footer = determineFooterElement();
-
-  const callback: IntersectionObserverCallback = entries => {
-    entries.forEach(entry => {
-      if (entry.target === footer) {
-        footerCallback();
-      }
-    });
-  };
-
-  var observer = new IntersectionObserver(callback, options);
-  observer.observe(footer);
-};
-
-docReady(initIntersectionObserver);
+docReady(() => {
+  footerVisible(determineFooterElement(), footerCallback);
+});

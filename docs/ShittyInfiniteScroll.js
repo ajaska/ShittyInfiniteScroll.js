@@ -81,28 +81,34 @@ exports.default = onDocReady;
 },{}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// Thanks to https://medium.com/walmartlabs/infinite-scrolling-the-right-way-11b098a08815
+function default_1(footer, callback) {
+    var options = {};
+    var observerCallback = function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting && entry.target === footer) {
+                callback();
+            }
+        });
+    };
+    var observer = new IntersectionObserver(observerCallback, options);
+    observer.observe(footer);
+}
+exports.default = default_1;
+
+},{}],3:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var docready_1 = require("./docready");
+var footerVisible_1 = require("./footerVisible");
 function determineFooterElement() {
     return document.querySelector("footer");
 }
 function footerCallback() {
     console.log("hello");
 }
-var initIntersectionObserver = function () {
-    var options = {
-    /* root: document.querySelector(".cat-list") */
-    };
-    var footer = determineFooterElement();
-    var callback = function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.target === footer) {
-                footerCallback();
-            }
-        });
-    };
-    var observer = new IntersectionObserver(callback, options);
-    observer.observe(footer);
-};
-docready_1.default(initIntersectionObserver);
+docready_1.default(function () {
+    footerVisible_1.default(determineFooterElement(), footerCallback);
+});
 
-},{"./docready":1}]},{},[2]);
+},{"./docready":1,"./footerVisible":2}]},{},[3]);
